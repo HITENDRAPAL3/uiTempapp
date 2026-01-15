@@ -58,10 +58,10 @@ function App() {
       setAuthError('');
       const response = await authApi.login(credentials);
       const { token, username, email } = response.data;
-      
+
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify({ username, email }));
-      
+
       setUser({ username, email });
       setIsAuthenticated(true);
     } catch (error) {
@@ -74,10 +74,10 @@ function App() {
       setAuthError('');
       const response = await authApi.register(userData);
       const { token, username, email } = response.data;
-      
+
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify({ username, email }));
-      
+
       setUser({ username, email });
       setIsAuthenticated(true);
     } catch (error) {
@@ -95,7 +95,7 @@ function App() {
   // Fetch all data
   const fetchData = useCallback(async () => {
     if (!isAuthenticated) return;
-    
+
     try {
       setLoading(true);
       const [categoriesRes, expensesRes, totalRes, catSummaryRes, monthlyRes] = await Promise.all([
@@ -130,7 +130,7 @@ function App() {
     try {
       let response;
       let filename;
-      
+
       switch (format) {
         case 'csv':
           response = await exportApi.downloadCSV(filters);
@@ -147,7 +147,7 @@ function App() {
         default:
           return;
       }
-      
+
       const blob = new Blob([response.data]);
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -157,7 +157,7 @@ function App() {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
-      
+
       showToast(`Exported to ${format.toUpperCase()} successfully`);
     } catch (error) {
       console.error('Export error:', error);
@@ -184,7 +184,7 @@ function App() {
     try {
       setSendingEmail(true);
       const response = await emailApi.downloadReport(filters);
-      
+
       const blob = new Blob([response.data], { type: 'text/html' });
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -194,7 +194,7 @@ function App() {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
-      
+
       showToast('Report downloaded! Open the HTML file in your browser.');
     } catch (error) {
       console.error('Download error:', error);
@@ -232,7 +232,7 @@ function App() {
 
   const handleDeleteExpense = async (id) => {
     if (!window.confirm('Are you sure you want to delete this expense?')) return;
-    
+
     try {
       await expenseApi.delete(id);
       showToast('Expense deleted successfully');
@@ -273,7 +273,7 @@ function App() {
 
   const handleDeleteCategory = async (id) => {
     if (!window.confirm('Are you sure you want to delete this category?')) return;
-    
+
     try {
       await categoryApi.delete(id);
       showToast('Category deleted successfully');
@@ -300,13 +300,13 @@ function App() {
   // Show auth forms if not authenticated
   if (!isAuthenticated) {
     return authView === 'login' ? (
-      <LoginForm 
+      <LoginForm
         onLogin={handleLogin}
         onSwitchToRegister={() => { setAuthView('register'); setAuthError(''); }}
         error={authError}
       />
     ) : (
-      <RegisterForm 
+      <RegisterForm
         onRegister={handleRegister}
         onSwitchToLogin={() => { setAuthView('login'); setAuthError(''); }}
         error={authError}
@@ -323,7 +323,7 @@ function App() {
           <p className="app-subtitle">Welcome, {user?.username}</p>
         </div>
         <div className="header-actions">
-          <button 
+          <button
             className="btn btn-primary"
             onClick={() => {
               setEditingExpense(null);
@@ -339,7 +339,7 @@ function App() {
       </header>
 
       {/* Dashboard Cards */}
-      <Dashboard 
+      <Dashboard
         totalExpenses={totalExpenses}
         expenseCount={expenses.length}
         categoryCount={categories.length}
@@ -348,13 +348,13 @@ function App() {
 
       {/* Tabs */}
       <div className="tabs">
-        <button 
+        <button
           className={`tab ${activeTab === 'expenses' ? 'active' : ''}`}
           onClick={() => setActiveTab('expenses')}
         >
           Expenses
         </button>
-        <button 
+        <button
           className={`tab ${activeTab === 'categories' ? 'active' : ''}`}
           onClick={() => setActiveTab('categories')}
         >
@@ -378,8 +378,15 @@ function App() {
                 <button className="btn btn-secondary btn-sm" onClick={() => handleExport('pdf')}>
                   PDF
                 </button>
-                <button 
-                  className="btn btn-primary btn-sm" 
+                <button
+                  className="btn btn-primary btn-sm"
+                  onClick={handleEmailReport}
+                  disabled={sendingEmail}
+                >
+                  {sendingEmail ? 'Sending...' : '📧 Email Report'}
+                </button>
+                <button
+                  className="btn btn-secondary btn-sm"
                   onClick={handleDownloadReport}
                   disabled={sendingEmail}
                 >
@@ -387,15 +394,15 @@ function App() {
                 </button>
               </div>
             </div>
-            
-            <FilterBar 
+
+            <FilterBar
               filters={filters}
               setFilters={setFilters}
               categories={categories}
               onClearFilters={handleClearFilters}
             />
 
-            <ExpenseList 
+            <ExpenseList
               expenses={expenses}
               onEdit={handleEditExpense}
               onDelete={handleDeleteExpense}
@@ -403,7 +410,7 @@ function App() {
             />
           </div>
         ) : (
-          <CategoryManager 
+          <CategoryManager
             categories={categories}
             onAdd={handleAddCategory}
             onUpdate={handleUpdateCategory}
@@ -412,7 +419,7 @@ function App() {
         )}
 
         {/* Summary Sidebar */}
-        <SummaryChart 
+        <SummaryChart
           categorySummary={categorySummary}
           monthlySummary={monthlySummary}
         />
@@ -420,7 +427,7 @@ function App() {
 
       {/* Expense Form Modal */}
       {showExpenseForm && (
-        <ExpenseForm 
+        <ExpenseForm
           expense={editingExpense}
           categories={categories}
           onSubmit={editingExpense ? handleUpdateExpense : handleAddExpense}
