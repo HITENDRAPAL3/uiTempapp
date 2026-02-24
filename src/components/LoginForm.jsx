@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FloatingBackground from './FloatingBackground';
 
 const LoginForm = ({ onLogin, onSwitchToRegister, error }) => {
   const [formData, setFormData] = useState({
@@ -36,12 +37,13 @@ const LoginForm = ({ onLogin, onSwitchToRegister, error }) => {
 
   return (
     <div className="auth-container">
+      <FloatingBackground />
       <div className="auth-card">
         <h1 className="auth-title">Expense Tracker</h1>
         <h2 className="auth-subtitle">Sign In</h2>
-        
+
         {error && <div className="auth-error">{error}</div>}
-        
+
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label className="form-label">Username</label>
@@ -51,7 +53,7 @@ const LoginForm = ({ onLogin, onSwitchToRegister, error }) => {
               className="form-input"
               value={formData.username}
               onChange={handleChange}
-              placeholder="Enter your username"
+              placeholder="Palacio"
             />
             {formErrors.username && <span className="field-error">{formErrors.username}</span>}
           </div>
@@ -64,7 +66,7 @@ const LoginForm = ({ onLogin, onSwitchToRegister, error }) => {
               className="form-input"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Enter your password"
+              placeholder="******"
             />
             {formErrors.password && <span className="field-error">{formErrors.password}</span>}
           </div>

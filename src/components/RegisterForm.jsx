@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FloatingBackground from './FloatingBackground';
 
 const RegisterForm = ({ onRegister, onSwitchToLogin, error }) => {
   const [formData, setFormData] = useState({
@@ -54,12 +55,13 @@ const RegisterForm = ({ onRegister, onSwitchToLogin, error }) => {
 
   return (
     <div className="auth-container">
+      <FloatingBackground />
       <div className="auth-card">
         <h1 className="auth-title">Expense Tracker</h1>
         <h2 className="auth-subtitle">Create Account</h2>
-        
+
         {error && <div className="auth-error">{error}</div>}
-        
+
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label className="form-label">Username</label>

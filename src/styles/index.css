@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'Nippo';
+  src: url('./fonts/Nippo-Variable.woff2') format('woff2');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nippo-Bold';
+  src: url('./fonts/Nippo-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,21 +21,21 @@
 }
 
 :root {
-  --bg-primary: #0a0e17;
-  --bg-secondary: #111827;
-  --bg-card: #1a2234;
-  --bg-card-hover: #212d45;
-  --accent-primary: #22d3ee;
-  --accent-secondary: #a78bfa;
+  --bg-primary: #1A1A1D;
+  --bg-secondary: #242429;
+  --bg-card: #3B1C32;
+  --bg-card-hover: #4a233f;
+  --accent-primary: #A64D79;
+  --accent-secondary: #6A1E55;
   --accent-success: #34d399;
   --accent-warning: #fbbf24;
   --accent-danger: #f87171;
   --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --border-color: #2d3a52;
-  --gradient-1: linear-gradient(135deg, #22d3ee 0%, #a78bfa 100%);
-  --gradient-2: linear-gradient(135deg, #34d399 0%, #22d3ee 100%);
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --border-color: rgba(166, 77, 121, 0.25);
+  --gradient-1: linear-gradient(135deg, #A64D79 0%, #6A1E55 100%);
+  --gradient-2: linear-gradient(135deg, #6A1E55 0%, #3B1C32 100%);
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
@@ -29,7 +45,7 @@
 }
 
 body {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Nippo', sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
@@ -53,7 +69,7 @@ body {
 }
 
 .app-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Nippo-Bold', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   background: var(--gradient-1);
@@ -99,7 +115,7 @@ body {
 }
 
 .card-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Nippo-Bold', sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: var(--text-secondary);
@@ -108,7 +124,7 @@ body {
 }
 
 .card-value {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Nippo-Bold', sans-serif;
   font-size: 2.25rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -131,10 +147,21 @@ body {
   font-size: 1.5rem;
 }
 
-.card-icon.cyan { background: rgba(34, 211, 238, 0.15); }
-.card-icon.purple { background: rgba(167, 139, 250, 0.15); }
-.card-icon.green { background: rgba(52, 211, 153, 0.15); }
-.card-icon.yellow { background: rgba(251, 191, 36, 0.15); }
+.card-icon.cyan {
+  background: rgba(34, 211, 238, 0.15);
+}
+
+.card-icon.purple {
+  background: rgba(167, 139, 250, 0.15);
+}
+
+.card-icon.green {
+  background: rgba(52, 211, 153, 0.15);
+}
+
+.card-icon.yellow {
+  background: rgba(251, 191, 36, 0.15);
+}
 
 /* Main Content Layout */
 .main-content {
@@ -165,7 +192,7 @@ body {
 }
 
 .section-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Nippo-Bold', sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
 }
@@ -195,8 +222,9 @@ body {
 }
 
 /* Form Elements */
-input, select {
-  font-family: 'DM Sans', sans-serif;
+input,
+select {
+  font-family: 'Nippo', sans-serif;
   font-size: 0.9rem;
   padding: 10px 14px;
   background: var(--bg-card);
@@ -207,7 +235,8 @@ input, select {
   transition: all 0.2s ease;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
   border-color: var(--accent-primary);
   box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15);
 }
@@ -218,7 +247,7 @@ input::placeholder {
 
 /* Buttons */
 .btn {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Nippo', sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
   padding: 10px 20px;
@@ -284,13 +313,14 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 14px 16px;
   text-align: left;
 }
 
 th {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Nippo-Bold', sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--text-muted);
@@ -309,7 +339,7 @@ tr:hover td {
 }
 
 .amount-cell {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Nippo-Bold', sans-serif;
   font-weight: 600;
   color: var(--accent-danger);
 }
@@ -372,7 +402,7 @@ tr:hover td {
 }
 
 .summary-item-amount {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Nippo-Bold', sans-serif;
   font-weight: 600;
   color: var(--text-primary);
 }
@@ -384,16 +414,45 @@ tr:hover td {
 }
 
 /* Category Colors */
-.cat-0 { background: #22d3ee; }
-.cat-1 { background: #a78bfa; }
-.cat-2 { background: #34d399; }
-.cat-3 { background: #fbbf24; }
-.cat-4 { background: #f87171; }
-.cat-5 { background: #fb923c; }
-.cat-6 { background: #60a5fa; }
-.cat-7 { background: #c084fc; }
-.cat-8 { background: #4ade80; }
-.cat-9 { background: #facc15; }
+.cat-0 {
+  background: #22d3ee;
+}
+
+.cat-1 {
+  background: #a78bfa;
+}
+
+.cat-2 {
+  background: #34d399;
+}
+
+.cat-3 {
+  background: #fbbf24;
+}
+
+.cat-4 {
+  background: #f87171;
+}
+
+.cat-5 {
+  background: #fb923c;
+}
+
+.cat-6 {
+  background: #60a5fa;
+}
+
+.cat-7 {
+  background: #c084fc;
+}
+
+.cat-8 {
+  background: #4ade80;
+}
+
+.cat-9 {
+  background: #facc15;
+}
 
 /* Modal */
 .modal-overlay {
@@ -427,6 +486,7 @@ tr:hover td {
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -441,7 +501,7 @@ tr:hover td {
 }
 
 .modal-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Nippo-Bold', sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -503,7 +563,9 @@ tr:hover td {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Empty State */
@@ -546,6 +608,7 @@ tr:hover td {
     opacity: 0;
     transform: translateX(100%);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -576,7 +639,7 @@ tr:hover td {
   background: transparent;
   border: none;
   color: var(--text-secondary);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Nippo', sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
   border-radius: var(--radius-sm);
@@ -674,7 +737,7 @@ tr:hover td {
 }
 
 .chart-bar-value {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Nippo-Bold', sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-secondary);
@@ -689,10 +752,14 @@ tr:hover td {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, #0f172a 100%);
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
 }
 
 .auth-card {
+  position: relative;
+  z-index: 100;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
@@ -700,10 +767,12 @@ tr:hover td {
   width: 100%;
   max-width: 420px;
   box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(12px);
+  /* Add blur to card too */
 }
 
 .auth-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Nippo-Bold', sans-serif;
   font-size: 2rem;
   font-weight: 700;
   background: var(--gradient-1);
@@ -715,7 +784,7 @@ tr:hover td {
 }
 
 .auth-subtitle {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Nippo-Bold', sans-serif;
   font-size: 1.25rem;
   font-weight: 500;
   color: var(--text-secondary);
@@ -785,4 +854,75 @@ tr:hover td {
 .export-buttons {
   display: flex;
   gap: 8px;
+}
+
+/* Floating Background */
+.floating-bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  /* Positive but lower than card */
+  pointer-events: none;
+}
+
+.floating-window {
+  position: absolute;
+  top: -250px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  animation: floatDown linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-glass {
+  width: 100%;
+  height: 100%;
+  background: rgba(59, 28, 50, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(166, 77, 121, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  filter: grayscale(20%) brightness(80%);
+  transition: all 0.3s ease;
+}
+
+@keyframes floatDown {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(calc(100vh + 300px)) rotate(10deg);
+  }
+}
+
+
+
+/* Optional: Add a subtle overlay to the background for better contrast */
+.auth-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, rgba(26, 26, 29, 0.7) 100%);
+  z-index: 2;
+  pointer-events: none;
 }
